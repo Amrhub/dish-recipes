@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: dish_reciepes_production
-  username: dish_reciepes
+  username: postgres
   password: <%= ENV["DISH_RECIEPES_DATABASE_PASSWORD"] %>
