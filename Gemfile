@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.8"
 
 gem "figaro", "~> 1.2"
+
+gem "sendgrid-ruby", "~> 6.6"

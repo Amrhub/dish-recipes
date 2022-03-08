@@ -4,6 +4,8 @@ class FoodsController < ApplicationController
   # GET /foods or /foods.json
   def index
     @foods = Food.all
+
+    redirect_to inventories_path, danger: 'Foods were successfully loaded.'
   end
 
   # GET /foods/1 or /foods/1.json

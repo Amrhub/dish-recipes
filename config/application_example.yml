@@ -1,0 +1,2 @@
+sendgrid_username: # <-- Add your SendGrid username here
+sendgrid_password: # <-- Add your SendGrid password here
