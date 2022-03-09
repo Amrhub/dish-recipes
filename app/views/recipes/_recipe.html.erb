@@ -11,12 +11,12 @@
 
   <p>
     <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
+    <%= recipe.preparation_time.strftime("%H:%M") %>
   </p>
 
   <p>
     <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
+    <%= recipe.cooking_time.strftime("%H:%M") %>
   </p>
 
   <p>
