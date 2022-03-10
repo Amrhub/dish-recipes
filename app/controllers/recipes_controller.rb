@@ -19,11 +19,11 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new(recipe_params.merge(user: current_user))
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
+        format.html { redirect_to recipe_url(@recipe), success: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
     respond_to do |format|
-      if @recipe.update(recipe_params)
+      if @recipe.update(recipe_params.merge(user: current_user))
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -64,6 +64,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:user_id, :name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
