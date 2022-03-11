@@ -1,0 +1,10 @@
+<div class="nested-fields row mb-3">
+  <div class="field col">
+    <%= f.text_field :food_id , class: 'form-control', placeholder: 'Food name'%>
+  </div>
+
+  <div class="field col">
+    <%= f.number_field :quantity , class: 'form-control', placeholder: 'Quantity'%>
+  </div>
+  <%= link_to_remove_association "Remove", f, class: ' d-flex align-items-center btn btn-danger w-auto' %>
+</div>

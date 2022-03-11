@@ -1,32 +1,21 @@
-<div id="<%= dom_id recipe %>">
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
+<div id="<%= dom_id recipe %>" class="card h-100">
+  <%= render "image" , recipe: recipe, class_type: 'card-img-top' %>
 
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
+  <div class="card-body">
+    <h5 class="card-title">
+    <%= " \"#{recipe.name}\" written by #{recipe_owner(recipe)}"%>
+    </h5>
 
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time.strftime("%H:%M") %>
-  </p>
+    <p class="card-text">
+      <%= recipe.description %>
+    </p>
 
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time.strftime("%H:%M") %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
+    <div class="d-flex">
+      <%= link_to 'Show this recipe', recipe, class: 'btn btn-primary me-auto'%>
+      <% if can? :destroy, recipe %>
+      <%= button_to "Delete this recipe", @recipe, method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
 
 </div>

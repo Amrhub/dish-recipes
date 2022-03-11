@@ -3,13 +3,23 @@
   <h1>Recipes</h1>
 </div>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
+<div class="d-grid gap-5">
+  <% @recipes.each_with_index do |recipe, index| %>
+   <% if (index+1) % 4 == 0%>
+      </div>
+    <% end %>
+    <% if (index+1) % 4 == 0 || index.zero? %>
+    <div id="recipes" class="row">
+    <% end %>
+  
+    <div class="col-4">
+      <%= render recipe %>
+    </div>
+    <% if (index+1) % 4 == 0%>
+      </div>
+    <% end %>
   <% end %>
 </div>
+
 
 <%= link_to "New recipe", new_recipe_path %>

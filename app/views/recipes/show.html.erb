@@ -1,6 +1,10 @@
+<h2 class="text-center">
+  <%= @recipe.name %>
+</h2>
 
-
-<%= render @recipe %>
+<div class="d-flex justify-content-center">
+  <%= render "image", recipe: @recipe, class_type: 'img-fluid' %>
+</div>
 
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |

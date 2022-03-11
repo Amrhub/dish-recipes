@@ -1,0 +1,5 @@
+  <% if recipe.image.attached? %>
+  <%= image_tag recipe.image, class: class_type, style: 'flex-grow: 100;', alt: 'Recipe image' %>
+  <% else %>
+  <%= image_tag image_path("no-recipe-image"), class: class_type, alt: 'Recipe image not available' %>
+  <% end %>

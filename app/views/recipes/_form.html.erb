@@ -16,10 +16,7 @@
 
   <div class="mb-3">
     <%= form.label :preparation_time, class: 'form-label'%>
-    <%= form.time_field :preparation_time , required: true, class: 'form-control', value: "%H:%M:%S", 
-      min: 'hh:mm:ss',
-      max: 'hh:mm:ss'
-    %>
+    <%= form.time_field :preparation_time , required: true, class: 'form-control'%>
   </div>
 
   <div class="mb-3">
@@ -35,6 +32,24 @@
   <div class="mb-3">
     <%= form.label :public, class: 'form-check-label'%>
     <%= form.check_box :public , class: 'form-check-input'%>
+  </div>
+
+  <div class="form-group mb-3">
+    <% if recipe.image.attached? %>
+      <%= image_tag recipe.image, class: 'img-thumbnail rounded', style: 'width: 400px; aspect-ratio: 1;'%>
+    <% else %>
+      <%= form.label :image, "Image (Perferable to be a perfect square 400x400)", class: 'form-label'%>
+    <% end %> 
+    <%= form.file_field :image, class: 'form-control'%>
+  </div >
+
+  <div id="recipe_foods">
+    <%= form.fields_for :recipe_foods do |rf| %>
+      <%= render "recipe_food_fields", f: rf %>
+    <% end %>
+    <div class="links mb-3">
+      <%= link_to_add_association "Add Ingredient", form, :recipe_foods , class: 'btn btn-success'%>
+    </div>
   </div>
 
   <div class="mb-3">
