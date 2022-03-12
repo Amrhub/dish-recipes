@@ -1,0 +1,28 @@
+<table class="table table-sccuess table-striped w-auto mx-auto">
+  <thead>
+    <th style="width: 30%;">Food</th>
+    <th style="width: 30%;">Quantity</th>
+    <th style="width: 30%;">Value</th>
+    <% if can? :manage, recipe %>
+    <th style="width: 30%;">Action</th>
+    <% end %>
+  </thead>
+
+  <tbody class="table-striped">
+    <% recipe_foods.each do |food| %>
+    <tr>
+      <td class="align-middle"><%= get_food_name(food) %></td>
+      <td class="align-middle"><%= get_food_quantity(food) %></td>
+      <td class="align-middle"><%= get_food_value(food.quantity, food) %></td>
+      <% if can? :manage, recipe %>
+      <td class="align-middle">
+        <div class="d-flex">
+          <%= link_to 'Edit', edit_recipe_recipe_food_path(recipe, food) , class: 'btn btn-success rounded-0 rounded-start'%>
+          <%= button_to 'Delete', recipe_recipe_food_path(recipe, food), method: :delete, class: 'btn btn-danger rounded-0 rounded-end'%>
+        </div>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

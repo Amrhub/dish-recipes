@@ -1,12 +1,12 @@
 <%= form_with(model: recipe) do |form| %>
-    <% if recipe.errors.any? %>
-    <div style="color: red">
-      <ul class="alert alert-danger list-unstyled">
-        <% recipe.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% if recipe.errors.any? %>
+  <div style="color: red">
+    <ul class="alert alert-danger list-unstyled">
+      <% recipe.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <div class="mb-3">

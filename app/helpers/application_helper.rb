@@ -12,4 +12,9 @@ module ApplicationHelper
       return "Submit"
     end
   end
+
+  def img_grow_value(class_type)
+    return 0 if class_type == "img-fluid"
+    100
+  end
 end
