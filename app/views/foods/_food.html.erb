@@ -1,22 +1,19 @@
-<div id="<%= dom_id food %>">
-  <p>
-    <strong>User:</strong>
-    <%= food.user_id %>
-  </p>
+<tr>
 
-  <p>
-    <strong>Name:</strong>
+  <td class="text-center align-middle">
     <%= food.name %>
-  </p>
+  </td>
 
-  <p>
-    <strong>Measurement unit:</strong>
+  <td class="text-center align-middle">
     <%= food.measurement_unit %>
-  </p>
+  </td>
 
-  <p>
-    <strong>Price:</strong>
-    <%= food.price %>
-  </p>
+  <td class="text-center align-middle">
+    $<%= food.price %>
+  </td>
 
-</div>
+  <td  class="d-flex w-auto">
+      <%= link_to "Edit", edit_food_path(food), class: 'btn btn-success rounded-0 rounded-start' %>
+      <%= button_to "Delete", food, class: 'btn btn-danger rounded-0  rounded-end' , method: :delete %>
+    </td>
+</tr>

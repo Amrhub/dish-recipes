@@ -1,0 +1,14 @@
+<h1 class="text-center mb-5">Shopping List</h1>
+
+<div class="d-flex gap-4 justify-content-center mb-5">
+  <div>
+    <strong>Amount of food items to purchase: </strong>
+    <%= count_food(@recipe) %>
+  </div>
+  <div>
+    <strong>Total value of food needed: </strong>
+    $<%= total_food_price(@recipe) %>
+  </div>
+</div>
+
+<%= render "shared/ingredient", recipe_foods: @recipe.recipe_foods, recipe: @recipe, render_actions: false  %>

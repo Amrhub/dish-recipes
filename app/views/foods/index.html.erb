@@ -1,14 +1,24 @@
 
 
-<h1>Foods</h1>
-
-<div id="foods">
-  <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
+<div class="d-flex align-items-center justify-content-center mb-5 gap-5">
+  <h1>Foods</h1>
+  <%= link_to "New food", new_food_path, class: 'btn btn-success'%>
 </div>
 
-<%= link_to "New food", new_food_path %>
+<% if @foods.empty? %>
+  <span class="h3 text-center d-block mt-5 text-danger">No food to show</span>
+<% else %>
+  <table class="table table-striped w-auto rounded rounded-3  mx-auto">
+      <thead>
+          <tr>
+              <th class="text-center">Food</th>
+              <th class="text-center">Unit price</th>
+              <th class="text-center">Measurement unit</th>
+              <th class="text-center">Action</th>
+          </tr>
+      </thead>
+      <tbody class="table-striped">
+        <%= render partial: "food", collection: @foods %>
+      </tbody>
+  </table>
+<% end %>
