@@ -1,9 +1,9 @@
 <%= form_with(model: recipe) do |form| %>
-  <% if recipe.errors.any? %>
+    <% if recipe.errors.any? %>
     <div style="color: red">
       <ul class="alert alert-danger list-unstyled">
-        <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -29,7 +29,7 @@
     <%= form.text_area :description, required: true, class: 'form-control'%>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 form-check form-switch">
     <%= form.label :public, class: 'form-check-label'%>
     <%= form.check_box :public , class: 'form-check-input'%>
   </div>
@@ -45,14 +45,14 @@
 
   <div id="recipe_foods">
     <%= form.fields_for :recipe_foods do |rf| %>
-      <%= render "recipe_food_fields", f: rf %>
+      <%= render "recipe_food_fields", f: rf, foods: @foods %>
     <% end %>
-    <div class="links mb-3">
-      <%= link_to_add_association "Add Ingredient", form, :recipe_foods , class: 'btn btn-success'%>
+    <div class="links mb-3 d-flex">
+      <%= link_to_add_association "Add Ingredient", form, :recipe_foods , class: 'btn btn-success ms-auto'%>
     </div>
   </div>
 
   <div class="mb-3">
-    <%= form.submit  "Create recipe", class: 'btn btn-primary'%>
+    <%= form.submit  button_text, class: 'btn btn-primary'%>
   </div>
 <% end %>

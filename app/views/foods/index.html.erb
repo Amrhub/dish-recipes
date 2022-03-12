@@ -1,14 +1,21 @@
 
 
-<h1>Foods</h1>
+<h1 class="text-center mb-5">Foods</h1>
 
-<div id="foods">
-  <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
+<table class="table table-striped w-auto rounded rounded-3  mx-auto">
+    <thead>
+        <tr>
+            <th class="text-center">Food</th>
+            <th class="text-center">Unit price</th>
+            <th class="text-center">Measurement unit</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody class="table-striped">
+      <%= render partial: "food", collection: @foods %>
+    </tbody>
+</table>
+
+<div class="d-flex">
+  <%= link_to "New food", new_food_path, class: 'btn btn-primary mx-auto'%>
 </div>
-
-<%= link_to "New food", new_food_path %>
