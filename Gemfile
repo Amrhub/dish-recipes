@@ -78,10 +78,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'sendgrid-ruby', '~> 6.6'
 
+gem 'paperclip', '~> 6.1'
 
-gem "paperclip", "~> 6.1"
+gem 'cancancan', '~> 3.3'
 
-
-gem "cancancan", "~> 3.3"
-
-gem "cocoon", "~> 1.2"
+gem 'cocoon', '~> 1.2'

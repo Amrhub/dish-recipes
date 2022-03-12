@@ -1,7 +1,7 @@
 module RecipesHelper
   def recipe_owner(recipe)
     if recipe.user == current_user
-      "You"
+      'You'
     else
       recipe.user.name
     end

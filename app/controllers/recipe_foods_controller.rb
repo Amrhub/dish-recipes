@@ -17,7 +17,6 @@ class RecipeFoodsController < ApplicationController
     @recipe = Recipe.find(@recipe_id)
   end
 
-
   def edit
     @recipe_food = RecipeFood.find(params[:id])
     @foods = Food.all
@@ -35,9 +34,9 @@ class RecipeFoodsController < ApplicationController
         format.html { redirect_to recipe_path(@recipe_id), success: 'Recipe food was successfully created.' }
         format.json { render :show, status: :created, location: @recipe_food }
       else
-        format.html do 
+        format.html do
           flash[:danger] = @recipe_food.errors.full_messages.join(', ')
-          redirect_back(fallback_location: root_path) 
+          redirect_back(fallback_location: root_path)
         end
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
       end
@@ -52,9 +51,9 @@ class RecipeFoodsController < ApplicationController
         format.html { redirect_to recipe_path(@recipe_id), success: 'Recipe food was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe_food }
       else
-        format.html do 
+        format.html do
           flash[:danger] = @recipe_food.errors.full_messages.join(', ')
-          redirect_back(fallback_location: root_path) 
+          redirect_back(fallback_location: root_path)
         end
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
       end

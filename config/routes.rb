@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get '/general_shopping_list', to: 'shopping_list#index', as:  'shopping_list'
   end
 
-  root "recipes#index"
+  root "public_recipes#index"
 
   # future work
     # resources :inventories do 

@@ -23,7 +23,8 @@
     <%= form.number_field :price , class: 'form-control'%>
   </div>
 
-  <div class="mb-3">
-    <%= form.submit "Create Food", class: 'btn btn-primary' %>
+  <div class="mb-3 btn-group">
+    <%= link_to "Back to foods", foods_path, class: 'btn btn-primary' %>
+    <%= form.submit "#{button_text} Food", class: 'btn btn-success' %>
   </div>
 <% end %>
