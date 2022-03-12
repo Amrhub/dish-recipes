@@ -66,6 +66,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
@@ -77,8 +78,6 @@ gem 'figaro', '~> 1.2'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'sendgrid-ruby', '~> 6.6'
-
-gem 'paperclip', '~> 6.1'
 
 gem 'cancancan', '~> 3.3'
 
