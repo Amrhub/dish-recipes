@@ -30,4 +30,4 @@
   </div>
 </div>
 
-<%= render "ingredient", recipe_foods: @recipe.recipe_foods, recipe: @recipe %>
+<%= render "shared/ingredient", recipe_foods: @recipe.recipe_foods, recipe: @recipe, render_actions: true %>

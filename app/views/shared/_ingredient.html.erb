@@ -3,7 +3,7 @@
     <th style="width: 30%;">Food</th>
     <th style="width: 30%;">Quantity</th>
     <th style="width: 30%;">Value</th>
-    <% if can? :manage, recipe %>
+    <% if (render_actions) && (can? :manage, recipe) %>
     <th style="width: 30%;">Action</th>
     <% end %>
   </thead>
@@ -14,7 +14,7 @@
       <td class="align-middle"><%= get_food_name(food) %></td>
       <td class="align-middle"><%= get_food_quantity(food) %></td>
       <td class="align-middle"><%= get_food_value(food.quantity, food) %></td>
-      <% if can? :manage, recipe %>
+      <% if (render_actions) && (can? :manage, recipe) %>
       <td class="align-middle">
         <div class="d-flex">
           <%= link_to 'Edit', edit_recipe_recipe_food_path(recipe, food) , class: 'btn btn-success rounded-0 rounded-start'%>
