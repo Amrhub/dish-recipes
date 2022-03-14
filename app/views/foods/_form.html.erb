@@ -1,0 +1,30 @@
+<%= form_with(model: food) do |form| %>
+  <% if food.errors.any? %>
+      <ul class="alert alert-danger list-unstyled">
+        <% food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label'%>
+    <%= form.text_field :name , class: 'form-control'%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :measurement_unit, class: 'form-label'%>
+    <%= form.text_field :measurement_unit , class: 'form-control', placeholder: 'g'%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price, "Unit Price", class: 'form-label'%>
+    <%= form.number_field :price , class: 'form-control'%>
+  </div>
+
+  <div class="mb-3 btn-group">
+    <%= link_to "Back to foods", foods_path, class: 'btn btn-primary' %>
+    <%= form.submit "#{button_text} Food", class: 'btn btn-success' %>
+  </div>
+<% end %>

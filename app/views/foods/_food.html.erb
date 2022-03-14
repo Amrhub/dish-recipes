@@ -1,0 +1,19 @@
+<tr>
+
+  <td class="text-center align-middle">
+    <%= food.name %>
+  </td>
+
+  <td class="text-center align-middle">
+    <%= food.measurement_unit %>
+  </td>
+
+  <td class="text-center align-middle">
+    $<%= food.price %>
+  </td>
+
+  <td  class="d-flex w-auto">
+      <%= link_to "Edit", edit_food_path(food), class: 'btn btn-success rounded-0 rounded-start' %>
+      <%= button_to "Delete", food, class: 'btn btn-danger rounded-0  rounded-end' , method: :delete %>
+    </td>
+</tr>

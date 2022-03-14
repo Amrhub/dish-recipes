@@ -1,0 +1,27 @@
+<h1 class="text-center mb-5">Public Recipes</h1>
+
+<% if @recipes.empty? %>
+  <span class="h3 text-center d-block mt-5 text-danger">No public recipes to show</span>
+<% else %>
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe) do %>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <div class="card-body">
+              <h4><%= recipe.name %></h4>
+              By: <%= recipe.user.name %>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <p class="card-title">Total food items: <%= count_food(recipe) %></p>
+              <p class="card-text">Total price: $<%= total_food_price(recipe) %></p>
+              <p class="card-text"><small class="text-muted"><%= time_format(recipe.created_at) %></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

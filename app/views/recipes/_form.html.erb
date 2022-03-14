@@ -1,0 +1,70 @@
+<%= form_with(model: recipe) do |form| %>
+  <% if recipe.errors.any? %>
+  <div style="color: red">
+    <ul class="alert alert-danger list-unstyled">
+      <% recipe.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label'%>
+    <%= form.text_field :name , required: true, class: 'form-control'%>
+  </div>
+
+  <div class="mb-3 row">
+    <%= form.label :preparation_time, "Preparation time (HH:MM)", class: 'form-label'%>
+    <div class="col">
+      <%= form.number_field :preparation_time_hours , required: true, class: 'form-control', placeholder: 'hours field'%>
+    </div>
+    <div class="col">
+      <%= form.number_field :preparation_time_minutes , required: true, class: 'form-control', placeholder: 'minutes field'%>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <%= form.label :cooking_time, "Cooking time (HH:MM)", class: 'form-label'%>
+    <div class="col">
+      <%= form.number_field :cooking_time_hours , required: true, class: 'form-control', placeholder: 'hours field'%>
+    </div>
+    <div class="col">
+      <%= form.number_field :cooking_time_minutes , required: true, class: 'form-control', placeholder: 'minutes field'%>
+    </div>
+    <span class="form-text">Note these fields add up e.g 1 hour 30 minutes will be 1.5hrs</span>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Recipe", class: 'form-label'%>
+    <%= form.text_area :description, required: true, class: 'form-control'%>
+  </div>
+
+  <div class="mb-3 form-check form-switch">
+    <%= form.label :public, class: 'form-check-label'%>
+    <%= form.check_box :public , class: 'form-check-input'%>
+  </div>
+
+  <div class="form-group mb-3">
+    <% if recipe.image.attached? %>
+      <%= image_tag recipe.image, class: 'img-thumbnail rounded'%>
+    <% else %>
+      <%= form.label :image, "Image", class: 'form-label'%>
+    <% end %> 
+    <%= form.file_field :image, class: 'form-control'%>
+  </div >
+
+  <div id="recipe_foods">
+    <%= form.fields_for :recipe_foods do |rf| %>
+      <%= render "recipe_food_fields", f: rf, foods: @foods %>
+    <% end %>
+    <div class="links mb-3 d-flex">
+      <%= link_to_add_association "Add Ingredient", form, :recipe_foods , class: 'btn btn-success ms-auto'%>
+    </div>
+  </div>
+
+  <div class="mb-3 btn-group">
+      <%= link_to "Back to recipes", recipes_path, class: 'btn btn-primary' %>
+      <%= form.submit  "#{button_text} recipe", class: 'btn btn-success'%>
+  </div>
+<% end %>

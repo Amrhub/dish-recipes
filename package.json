@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "sudo docker-compose run --rm --service-ports ruby_dev",
+    "build": "sudo docker-compose build",
+    "down": "sudo docker-compose down",
+    "destroy": "sudo sh ./destroy.sh",
+    "db:start": "sudo docker-compose up -d db"
+  },
+  "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
+    "jquery": "^3.6.0"
+  }
+}
